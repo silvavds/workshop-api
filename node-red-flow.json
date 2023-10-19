@@ -1,0 +1,195 @@
+[
+    {
+        "id": "31e189d8ea35b073",
+        "type": "tab",
+        "label": "Flux 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2edfdf20a19189b5",
+        "type": "ui_text",
+        "z": "31e189d8ea35b073",
+        "group": "d6e413f57fe03f8d",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Insert your information:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 340,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "c5cf6c4487414291",
+        "type": "ui_form",
+        "z": "31e189d8ea35b073",
+        "name": "",
+        "label": "Iris Info Atelier",
+        "group": "d6e413f57fe03f8d",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Sepal length",
+                "value": "sepal_length",
+                "type": "number",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Sepal width",
+                "value": "sepal_width",
+                "type": "number",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Petal length",
+                "value": "petal_length",
+                "type": "number",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Petal width",
+                "value": "petal_width",
+                "type": "number",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "sepal_length": "",
+            "sepal_width": "",
+            "petal_length": "",
+            "petal_width": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 320,
+        "y": 120,
+        "wires": [
+            [
+                "9dd4c2827bbfe1a3",
+                "865633cfd60e562b"
+            ]
+        ]
+    },
+    {
+        "id": "0112167c979df90e",
+        "type": "ui_text",
+        "z": "31e189d8ea35b073",
+        "group": "d6e413f57fe03f8d",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Your flower is:",
+        "format": "{{msg.payload.result}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 760,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "2687499d74c5e955",
+        "type": "debug",
+        "z": "31e189d8ea35b073",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "9dd4c2827bbfe1a3",
+        "type": "function",
+        "z": "31e189d8ea35b073",
+        "name": "passer",
+        "func": "return msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 200,
+        "wires": [
+            [
+                "c5cf6c4487414291"
+            ]
+        ]
+    },
+    {
+        "id": "865633cfd60e562b",
+        "type": "http request",
+        "z": "31e189d8ea35b073",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://localhost:105/predict",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 550,
+        "y": 160,
+        "wires": [
+            [
+                "2687499d74c5e955",
+                "0112167c979df90e"
+            ]
+        ]
+    },
+    {
+        "id": "d6e413f57fe03f8d",
+        "type": "ui_group",
+        "name": "Iris Atelier Groupe",
+        "tab": "beeba3d30b7ea3dc",
+        "order": 1,
+        "disp": true,
+        "width": "7",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "beeba3d30b7ea3dc",
+        "type": "ui_tab",
+        "name": "Iris Atelier Tab",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
